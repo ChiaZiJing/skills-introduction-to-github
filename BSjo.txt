@@ -1,0 +1,79 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01  N               PIC 9(3).
+       01  SEARCH-NUM      PIC 9(3).
+       01  BINARY-SEARCH-NUM.
+               02  ENT-NUM     OCCURS 10 TIMES INDEXED BY NUMB-INDEX.
+                   03  WS-NUM      PIC 9(3).
+
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+            DISPLAY "ENTER 3 DIGIT NUMBER:".
+            ACCEPT N.
+            IF N<100 OR N>999
+                DISPLAY "PLEASE ENTER AGAIN:"
+
+           PERFORM OTHER-NUMBERS.
+           DISPLAY "ENTER THE NUMBER:".
+           ACCEPT SEARCH-NUM.
+
+           PERFORM W-B-S.
+            STOP RUN.
+
+           OTHER-NUMBERS.
+               SET NUMB-INDEX TO 1
+               DISPLAY "ENTER A NUMBER:"
+               ACCEPT WS-NUM(NUMB-INDEX)
+
+               PERFORM UNTIL WS-NUM(NUMB-INDEX) = 0
+               ADD 1 TO NUMB-INDEX
+               DISPLAY "ENTER ./< lm)_":":_(<"
+       END PROGRAM YOUR-PROGRAM-NAME.
+
+
+
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           ACCEPT WS-REFMODTIME FROM TIME
+           DISPLAY "TIME IS: "
+           DISPLAY WS-REFMODTIME
+           DISPLAY "NO: OF HOURS: " WS-REFMODTIME (1:2)
+           DISPLAY "NO: OF MINUTES: " WS-REFMODTIME (3:2)
+           DISPLAY "NO: OF SECONDS: " WS-REFMODTIME (5:2)
+           DISPLAY "NO: OF MILISECONDS: " WS-REFMODTIME (7:2)
+           ACCEPT WS-REFMODDATE FROM DATE
+               DISPLAY WS-REFMODDATE
+
+               DISPLAY "MONTH IS: " WS-REFMODDATE (3:2)
+               DISPLAY "YEAR IS: " WS-REFMODDATE (1:2)
+               DISPLAY "DATE IS: " WS-REFMODDATE (5:2)
+               ACCEPT WS-DAYOFMON FROM DAY
+               DISPLAY "DAY IS: " WS-DAYOFMON
+
+           PERFORM AAA.
+               COMPUTE TOTALDAYS = (USER-KEYIN - WS-REFMODDATE)
+
+           AAA.
+               DISPLAY "INSERT DATE: "
+               ACCEPT USER-KEYIN-DATE
+               IF DATE1 <= WS-REFMODDATE
+                   ACCEPT TOTALDAYS
+                ELSE DATE1 > WS-REFMODDATE
+                    ACCEPT TOTALDAYS
+
+
+
+               COMPUTE TOTALDAYS = (USER-KEYIN - WS-REFMODDATE)
+
+               DISPLAY TOTALDAYS
+               STOP RUN.
+       END PROGRAM YOUR-PROGRAM-NAME.
