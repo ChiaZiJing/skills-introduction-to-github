@@ -1,0 +1,59 @@
+      ******************************************************************
+      * Author:
+      * Date:
+      * Purpose:
+      * Tectonics: cobc
+      ******************************************************************
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. YOUR-PROGRAM-NAME.
+       DATA DIVISION.
+       FILE SECTION.
+       WORKING-STORAGE SECTION.
+       01  WS-REFMODTIME   PIC X(8).
+       01  WS-DAYOFMON     PIC X(2).
+       01  WS-REFMODDATE   PIC 9(6).
+       01  USER-KEYIN      PIC 9(6).
+       01  TOTALDAYS       PIC 9(6).
+       01  DATE1           PIC 9(6).
+       01  USER-KEYIN-DATE     PIC 9(2).
+       01  USER-KEYIN-MONTH    PIC 9(2).
+       01  USER-KEYIN-YEAR    PIC 9(2).
+
+
+
+       PROCEDURE DIVISION.
+       MAIN-PROCEDURE.
+           ACCEPT WS-REFMODTIME FROM TIME
+           DISPLAY "TIME IS: "
+           DISPLAY WS-REFMODTIME
+           DISPLAY "NO: OF HOURS: " WS-REFMODTIME (1:2)
+           DISPLAY "NO: OF MINUTES: " WS-REFMODTIME (3:2)
+           DISPLAY "NO: OF SECONDS: " WS-REFMODTIME (5:2)
+           DISPLAY "NO: OF MILISECONDS: " WS-REFMODTIME (7:2)
+           ACCEPT WS-REFMODDATE FROM DATE
+               DISPLAY WS-REFMODDATE
+
+               DISPLAY "MONTH IS: " WS-REFMODDATE (3:2)
+               DISPLAY "YEAR IS: " WS-REFMODDATE (1:2)
+               DISPLAY "DATE IS: " WS-REFMODDATE (5:2)
+               ACCEPT WS-DAYOFMON FROM DAY
+               DISPLAY "DAY IS: " WS-DAYOFMON
+
+           PERFORM AAA.
+               COMPUTE TOTALDAYS = (USER-KEYIN - WS-REFMODDATE)
+
+           AAA.
+               DISPLAY "INSERT DATE: "
+               ACCEPT USER-KEYIN-DATE
+               IF DATE1 <= WS-REFMODDATE
+                   ACCEPT TOTALDAYS
+                ELSE DATE1 > WS-REFMODDATE
+                    ACCEPT TOTALDAYS
+
+
+
+               COMPUTE TOTALDAYS = (USER-KEYIN - WS-REFMODDATE)
+
+               DISPLAY TOTALDAYS
+               STOP RUN.
+       END PROGRAM YOUR-PROGRAM-NAME.
